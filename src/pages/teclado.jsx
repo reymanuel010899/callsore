@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-const PhoneDialPad = ({ onPress, onDelete }) => {
+const PhoneDialPad = ({ onPress, onDelete, handlecall}) => {
 
   const renderButton = (value, letters = '') => (
     <TouchableOpacity onPress={() => onPress(value)} style={styles.button}>
@@ -37,13 +37,12 @@ const PhoneDialPad = ({ onPress, onDelete }) => {
 
       {/* Nueva fila para los botones de eliminar y llamar */}
       <View style={styles.actionRow}>
-      <TouchableOpacity onPress={() => console.log('Call')} style={styles.callButton}>
-          <Ionicons name="call-outline" size={44} color="#fff" />
+      <TouchableOpacity onPress={handlecall} style={styles.callButton}>
+          <Ionicons name="call-outline" size={64} color="#fff" />
         </TouchableOpacity>
         <TouchableOpacity onPress={onDelete} style={styles.deleteButton}>
-          <AntDesign name="closecircleo" size={30} color="#fff" />
+          <AntDesign name="closecircleo" size={38} color="#fff" />
         </TouchableOpacity>
-        
       </View>
     </View>
   );
@@ -51,15 +50,20 @@ const PhoneDialPad = ({ onPress, onDelete }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     width: '100%',
     backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: "13%",
+    // button: 10,
+    // top: "20%",
+    // marginTop: 800,
   },
   row: {
     backgroundColor: 'black',
     flexDirection: 'row',
+    top: 50,
     marginBottom: 10,
   },
   button: {
@@ -81,7 +85,7 @@ const styles = StyleSheet.create({
   },
   actionRow: {
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: 100,
     justifyContent: 'space-between',
     width: '50%', // Ajusta el ancho de la fila para los botones de eliminar y llamar
   },
@@ -95,13 +99,13 @@ const styles = StyleSheet.create({
     marginLeft: 30
   },
   deleteButton: {
-    width: 80,
+    width: 100,
     height: 80,
     borderRadius: 40,
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 10,
-    marginTop: 5
+    // marginTop: 10
   },
 });
 
